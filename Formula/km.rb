@@ -9,6 +9,10 @@ class Km < Formula
       url "https://github.com/moghtech/komodo/releases/download/v#{version}/km-apple"
       sha256 "4b55696af5bc25ca85ea6b7d9a2192ee6d443b0536c7202b857baf4455e60db4"
     end
+
+    on_intel do
+      odie "km: Intel macOS is not supported by this formula. Please use an Apple Silicon Mac or a supported Linux platform."
+    end
   end
 
   on_linux do
