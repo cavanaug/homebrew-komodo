@@ -1,24 +1,59 @@
 class Periphery < Formula
   desc "Agent to connect with Komodo Core"
   homepage "https://komo.do"
-  url "https://github.com/moghtech/homebrew-komodo/releases/download/v1.19.5/periphery.tar.gz"
-  sha256 "757de7b5f3e75dc75bb872db28c81d04a5bf4f68b32352a8904d160de1ab7c4a"
+  version "1.19.5"
   license "GPL-V3.0"
 
+  on_macos do
+    on_arm do
+      url "https://github.com/moghtech/komodo/releases/download/v#{version}/periphery-apple"
+      sha256 "488913f9dde7c43afcac9cfbf3cabb5d858deecf08029a92a3809dd1f3bf35f5"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "https://github.com/moghtech/komodo/releases/download/v#{version}/periphery-aarch64"
+      sha256 "682b280da2f09b5b6c0dc87d1cb511a35c930670e008808453f869a6892fe111"
+    end
+
+    on_intel do
+      url "https://github.com/moghtech/komodo/releases/download/v#{version}/periphery-x86_64"
+      sha256 "d6e89cb3602f7df7b64c43d35892c641578119c245196baed2857d7d07859470"
+    end
+  end
+
+  resource "periphery-config" do
+    url "https://raw.githubusercontent.com/moghtech/komodo/v#{version}/config/periphery.config.toml"
+    sha256 "e593bd8df673fc210f70e4c767acc053b987d12cbd894f5925ed5c524ac4400c"
+  end
+
   def install
-    bin.install "periphery"
-    (etc/"komodo").install "periphery.config.toml"
+    binary_name = if OS.mac?
+      "periphery-apple"
+    elsif Hardware::CPU.arm?
+      "periphery-aarch64"
+    else
+      "periphery-x86_64"
+    end
+
+    bin.install binary_name => "periphery"
+
+    resource("periphery-config").stage do
+      (etc/"komodo").install "periphery.config.toml"
+    end
+
     (var/"komodo").mkpath
     (var/"log/komodo").mkpath
   end
 
-  # Define a launchd service block
   service do
-    run ["/bin/sh", "-c", "PATH=$PATH:/usr/local/bin #{opt_bin}/periphery --config-path #{etc}/komodo/periphery.config.toml"]
+    run [opt_bin/"periphery", "--config-path", etc/"komodo/periphery.config.toml"]
     keep_alive true
     working_dir var/"komodo"
     log_path var/"log/komodo/periphery.log"
     error_log_path var/"log/komodo/periphery-error.log"
+    environment_variables PATH: std_service_path_env
   end
 
   test do
