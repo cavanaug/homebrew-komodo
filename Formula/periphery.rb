@@ -1,8 +1,8 @@
 class Periphery < Formula
   desc "Agent to connect with Komodo Core"
   homepage "https://komo.do"
-  url "https://github.com/moghtech/homebrew-komodo/releases/download/v1.19.5/periphery.tar.gz"
-  sha256 "757de7b5f3e75dc75bb872db28c81d04a5bf4f68b32352a8904d160de1ab7c4a"
+  url "https://github.com/moghtech/homebrew-komodo/releases/download/v2.0.0/periphery.tar.gz"
+  sha256 "dfab177de48338182f617946b0e47eea18c379707d4bdc6d61405a30b5d5852b"
   license "GPL-V3.0"
 
   def install

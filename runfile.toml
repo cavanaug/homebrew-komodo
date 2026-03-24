@@ -23,8 +23,3 @@ alias = "t"
 description = "both tar-periphery and tar-km"
 after = ["tar-periphery", "tar-km"]
 cmd = "echo 'finished'"
-
-[publish]
-alias = "p"
-description = ""
-cmd = "deno run --allow-all ./scripts/publish.ts"
