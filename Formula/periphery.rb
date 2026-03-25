@@ -9,6 +9,10 @@ class Periphery < Formula
       url "https://github.com/moghtech/komodo/releases/download/v#{version}/periphery-apple"
       sha256 "25898267d549672654134063dc37634cccb9c11d961724839d1fd15f0c5fb83c"
     end
+
+    on_intel do
+      odie "The periphery formula does not provide a macOS Intel binary. Please use an Apple Silicon Mac or install on Linux."
+    end
   end
 
   on_linux do
