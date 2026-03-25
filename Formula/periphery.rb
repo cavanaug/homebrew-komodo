@@ -1,31 +1,31 @@
 class Periphery < Formula
   desc "Agent to connect with Komodo Core"
   homepage "https://komo.do"
-  version "1.19.5"
+  version "2.0.0"
   license "GPL-V3.0"
 
   on_macos do
     on_arm do
       url "https://github.com/moghtech/komodo/releases/download/v#{version}/periphery-apple"
-      sha256 "488913f9dde7c43afcac9cfbf3cabb5d858deecf08029a92a3809dd1f3bf35f5"
+      sha256 "25898267d549672654134063dc37634cccb9c11d961724839d1fd15f0c5fb83c"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/moghtech/komodo/releases/download/v#{version}/periphery-aarch64"
-      sha256 "682b280da2f09b5b6c0dc87d1cb511a35c930670e008808453f869a6892fe111"
+      sha256 "81052406a8baad114d26c2df98a20e73964ff11e301282639249c2979a5179a6"
     end
 
     on_intel do
       url "https://github.com/moghtech/komodo/releases/download/v#{version}/periphery-x86_64"
-      sha256 "d6e89cb3602f7df7b64c43d35892c641578119c245196baed2857d7d07859470"
+      sha256 "15f6834b2dbac0314807723a30292ef942841b310ba81f133fd80b2ca5e96fa7"
     end
   end
 
   resource "periphery-config" do
     url "https://raw.githubusercontent.com/moghtech/komodo/v#{version}/config/periphery.config.toml"
-    sha256 "e593bd8df673fc210f70e4c767acc053b987d12cbd894f5925ed5c524ac4400c"
+    sha256 "d1ef3295231b4d66ca62fd0a2f0c4f8206fc349c8b85dc851c2984ec5ca03bf7"
   end
 
   def install
