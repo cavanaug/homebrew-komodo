@@ -1,13 +1,13 @@
 class Km < Formula
   desc "Cli to interact with Komodo Core"
   homepage "https://komo.do"
-  version "2.0.0"
+  version "2.1.1"
   license "GPL-V3.0"
 
   on_macos do
     on_arm do
       url "https://github.com/moghtech/komodo/releases/download/v#{version}/km-apple"
-      sha256 "8b07e5369c770aea052bedcab065ee6386a8cdb58d7d78cfc52a3122a606b093"
+      sha256 "2348a08d937e04a61b7a2a4ae2fbcdb5c6f6e8380df8a33195ad80e0679aa607"
     end
 
     on_intel do
@@ -18,12 +18,12 @@ class Km < Formula
   on_linux do
     on_arm do
       url "https://github.com/moghtech/komodo/releases/download/v#{version}/km-aarch64"
-      sha256 "336e8f236830be91c31f5111e7c2248b94ea3eafd1a1017569949ebd587a4c7f"
+      sha256 "c6d1e5e60e9c1831176baa31f0e6c430cc759066202bf35ab8ccbaeffd7561f0"
     end
 
     on_intel do
       url "https://github.com/moghtech/komodo/releases/download/v#{version}/km-x86_64"
-      sha256 "dc020b20f0a365b739fe0fd250c8ffa205af95533372005e94daef74e0c57e63"
+      sha256 "b91d9b75bdabe5447510216ff0a669d5721c43d05ad67d3d14c72567f05a4e93"
     end
   end
 
